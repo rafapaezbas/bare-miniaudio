@@ -13,6 +13,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "format": "prettier . --write",
+    "lint": "prettier --check . && lunte",
     "build": "bare-make generate && bare-make build && bare-make install"
   },
   "keywords": [],
@@ -26,6 +27,7 @@
     "bare-make": "^1.8.0",
     "cmake-bare": "^1.8.0",
     "cmake-ports": "^1.10.0",
+    "lunte": "^1.8.4",
     "prettier": "^3.9.5",
     "prettier-config-standard": "^7.0.0"
   },
