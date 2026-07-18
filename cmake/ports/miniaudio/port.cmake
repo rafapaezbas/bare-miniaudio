@@ -2,11 +2,17 @@ include_guard(GLOBAL)
 
 set(lib lib/libminiaudio.a)
 
+set(args -DBUILD_SHARED_LIBS=OFF)
+
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin|iOS")
+  list(APPEND args "-DCMAKE_C_FLAGS=-x objective-c")
+endif()
+
 declare_port(
   "github:mackron/miniaudio#master"
   miniaudio
   ARGS
-    -DBUILD_SHARED_LIBS=OFF
+    ${args}
   BYPRODUCTS
     ${lib}
 )
