@@ -4,7 +4,7 @@ set(lib lib/libminiaudio.a)
 
 set(args -DBUILD_SHARED_LIBS=OFF)
 
-if(CMAKE_SYSTEM_NAME MATCHES "Darwin|iOS")
+if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
   list(APPEND args "-DCMAKE_C_FLAGS=-x objective-c")
 endif()
 
