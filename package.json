@@ -28,5 +28,13 @@
     "cmake-ports": "^1.10.0",
     "prettier": "^3.9.5",
     "prettier-config-standard": "^7.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafapaezbas/bare-miniaudio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rafapaezbas/bare-miniaudio/issues"
+  },
+  "homepage": "https://github.com/rafapaezbas/bare-miniaudio#readme"
 }
