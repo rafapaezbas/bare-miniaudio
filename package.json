@@ -1,23 +1,25 @@
 {
   "name": "bare-miniaudio",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "MiniAudio Bare binding",
+  "main": "binding.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "build": "bare-make generate && bare-make build && bare-make install"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "type": "commonjs",
   "dependencies": {
-    "prettier": "^3.9.5",
-    "prettier-config-standard": "^7.0.0"
+    "ready-resource": "^1.2.0"
   },
   "devDependencies": {
     "bare-make": "^1.8.0",
     "cmake-bare": "^1.8.0",
-    "cmake-ports": "^1.10.0"
+    "cmake-ports": "^1.10.0",
+    "prettier": "^3.9.5",
+    "prettier-config-standard": "^7.0.0"
   }
 }

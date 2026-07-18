@@ -6,8 +6,6 @@
 ma_engine engine;
 ma_sound sound;
 
-bool sound_loaded = false;
-
 static js_value_t *
 bare_miniaudio_init(js_env_t *env, js_callback_info_t *info) {
   js_value_t *result;
@@ -32,11 +30,6 @@ on_end_js(js_env_t *env, js_value_t *fn, void *context, void *data) {
 
 static js_value_t *
 bare_miniaudio_play(js_env_t *env, js_callback_info_t *info) {
-  if (sound_loaded) {
-    ma_sound_uninit(&sound);
-    sound_loaded = false;
-  }
-
   int err;
 
   size_t argc = 2;
@@ -60,7 +53,7 @@ bare_miniaudio_play(js_env_t *env, js_callback_info_t *info) {
   free(path);
 
   js_value_t *result;
-  js_get_undefined(env, &result);
+  js_get_boolean(env, r == MA_SUCCESS, &result);
 
   if (r != MA_SUCCESS) {
     return result;
@@ -80,7 +73,6 @@ bare_miniaudio_play(js_env_t *env, js_callback_info_t *info) {
 
   ma_sound_start(&sound);
   ma_sound_set_end_callback(&sound, on_end_audio, NULL);
-  sound_loaded = true;
 
   return result;
 }
@@ -91,14 +83,9 @@ bare_miniaudio_stop(js_env_t *env, js_callback_info_t *info) {
   js_value_t *result;
   js_get_undefined(env, &result);
 
-  if (!sound_loaded) {
-    return result;
-  }
-
   ma_sound_uninit(&sound);
   js_release_threadsafe_function(end_tsfn, js_threadsafe_function_release);
   end_tsfn = NULL;
-  sound_loaded = false;
 
   return result;
 }
