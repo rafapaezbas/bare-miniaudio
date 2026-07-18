@@ -1,6 +1,6 @@
 {
   "name": "bare-miniaudio",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "MiniAudio Bare binding",
   "main": "binding.js",
   "files": [
