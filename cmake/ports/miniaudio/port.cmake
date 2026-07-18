@@ -13,6 +13,11 @@ if(CMAKE_SYSTEM_NAME STREQUAL "iOS")
     "-DCMAKE_C_FLAGS=-x objective-c"
     -DCMAKE_TRY_COMPILE_TARGET_TYPE=STATIC_LIBRARY
   )
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  list(APPEND args
+    -DCMAKE_MSVC_RUNTIME_LIBRARY=MultiThreaded
+    -DCMAKE_POLICY_DEFAULT_CMP0091=NEW
+  )
 endif()
 
 declare_port(
