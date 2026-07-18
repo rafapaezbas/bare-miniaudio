@@ -1,6 +1,10 @@
 include_guard(GLOBAL)
 
-set(lib lib/libminiaudio.a)
+if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+  set(lib lib/miniaudio.lib)
+else()
+  set(lib lib/libminiaudio.a)
+endif()
 
 set(args -DBUILD_SHARED_LIBS=OFF)
 
