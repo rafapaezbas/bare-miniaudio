@@ -18,7 +18,7 @@ class MiniAudio extends ReadyResource {
     return new Promise((resolve, reject) => {
       this._playResolve = resolve
       const loaded = addon.play(path, () => {
-        this.stop()
+        this.stop(true)
       })
       if (!loaded) {
         this.isPlaying = false
@@ -27,9 +27,9 @@ class MiniAudio extends ReadyResource {
     })
   }
 
-  stop() {
+  stop(ended = false) {
     if (!this.isPlaying) return
-    this._playResolve()
+    this._playResolve(ended)
     this.isPlaying = false
     this._playResolve = null
     return addon.stop()
