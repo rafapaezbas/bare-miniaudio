@@ -19,7 +19,7 @@ const audio = new MiniAudio()
 
 await audio.ready()
 
-// Resolves with true when the track finishes, or undefined if stop() was called.
+// Resolves with true when the track finishes, or false if stop() was called.
 // Rejects if the file cannot be loaded.
 const ended = await audio.play('/path/to/track.mp3')
 
@@ -47,14 +47,14 @@ Load and start playing the file at `path`. Only one sound plays at a time — ca
 Returns a promise that:
 
 - **resolves with `true`** when the sound plays through to the end,
-- **resolves with `undefined`** when playback is cut short by `stop()` (including the implicit stop when `play()` is called again), and
+- **resolves with `false`** when playback is cut short by `stop()` (including the implicit stop when `play()` is called again), and
 - **rejects** if the file at `path` cannot be loaded.
 
 The resolved value lets you tell the two cases apart, e.g. to advance to the next track only on natural completion.
 
 ### `audio.stop()`
 
-Stop the currently playing sound. No-op if nothing is playing. Resolves the pending `play()` promise with `undefined` and releases the sound's resources.
+Stop the currently playing sound. No-op if nothing is playing. Resolves the pending `play()` promise with `false` and releases the sound's resources.
 
 ## Building from source
 
